@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <!-- Link for the CSS locally -->
         <link rel="stylesheet" href="css/style.css">
+        <!-- Link for the CSS on github pages -->
         <link rel="stylesheet" href="GUI-homework-5/css/style.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.8.3.js"></script>
@@ -13,6 +15,10 @@
     <body>
         <div class="container">
             <h1 align="center">GUI I - Homework 5</h1>
+            <div id="score-board">
+                <h3>Total Game Score: <p id="game-score">0</p></h3>
+                <h3>Current Score: <p id="current-score">0</p></h3>
+            </div>
         </div>
         <div id="one-line-board" >
             <div id="board-tile-1" class="tile-spot droppable"></div>
@@ -31,9 +37,14 @@
             <div id="board-tile-14" class="tile-spot droppable"></div>
             <div id="board-tile-15" class="tile-spot droppable"></div>
         </div>
+        <div id="current-word-info">
+            <h4>Your word is: <p class="current-word-value">Hello</p></h4>
+            <h4>It is at least 2 letters long: <p class="letters-validation">No</p></h4>
+            <h4>It is in the dictionary: <p class="dictionary-word">No</p></h4>
+        </div>
         <div id="tile-rack">
             <div id="tiles-in-rack" class="droppable">
-                <div id="drag" class="tile draggable"></div>
+                <div class="tile draggable"></div>
                 <div class="tile draggable"></div>
                 <div class="tile draggable"></div>
                 <div class="tile draggable"></div>
@@ -42,7 +53,13 @@
                 <div class="tile draggable"></div>
             </div>
         </div>
+        <div id="game-options">
+            <button id="submit-btn">Submit Word</button>
+            <button id="trade-btn">Trade Tiles</button>
+        </div>
+        <!-- Link for the script locally -->
         <script src="js/script.js"></script>
+        <!-- Link for the script on github pages -->
         <script src="GUI-homework-5/js/script.js"></script>
     </body>
 </html>

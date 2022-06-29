@@ -2,21 +2,70 @@ body {
     background-color: antiquewhite;
 }
 
+#score-board {
+    /* background-color:burlywood; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+}
+
+#score-board p {
+    display: inline;
+}
+
+#one-line-board {
+    background-image: url("../graphics_data/Scrabble_Board_OneLine.png");
+    width: 1129px;
+    height: 80px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+#current-word-info {
+    /* background-color: aliceblue; */
+    width: fit-content;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    /* display: inline-block; */
+    text-align:center;
+}
+
+#current-word-info p {
+    display: inline;
+}
+
+#current-word-info .current-word-value {
+    color:rgb(133, 154, 91);
+}
+
+#current-word-info .letters-validation {
+    color: red;
+}
+
+#current-word-info .dictionary-word {
+    color: red;
+}
+
 #tile-rack{
     /* background-color: yellowgreen; */
     background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
     background-size: 100% 100%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     /* margin-bottom: auto; */
     width: 600px;
     height: 100px;
-    /* max-width: 100%; */
-    /* height: auto; */
     background-repeat: no-repeat;
     display:flex;
 }
+
 #tiles-in-rack {
     /* background-color: blanchedalmond; */
     width: 550px;
@@ -28,16 +77,6 @@ body {
     /* display: inline-block; */
     display: flex;
     justify-content:space-evenly;
-}
-
-#one-line-board {
-    background-image: url("../graphics_data/Scrabble_Board_OneLine.png");
-    width: 1129px;
-    height: 80px;
-    margin-top: 20%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
 }
 
 .tile-spot {
@@ -61,6 +100,31 @@ body {
     overflow: auto;
     position: relative;
 }
+
+#game-options {
+    /* background-color: aliceblue; */
+    width: 500px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+#game-options button {
+    width: 100px;
+    height: 40px;
+}
+#submit-btn {
+    background-color: green;
+    color: white;
+}
+#trade-btn {
+    background-color: dodgerblue;
+    color: white;
+}
+
+
 
 #drag {
 	width: 67px;
