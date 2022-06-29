@@ -107,9 +107,12 @@ body {
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
+    /* display: block; */
+    /* justify-content: space-evenly; */
+}
+#current-game-options {
     display: flex;
     justify-content: space-evenly;
-    
 }
 #game-options button {
     width: 100px;
@@ -122,6 +125,17 @@ body {
 #trade-btn {
     background-color: dodgerblue;
     color: white;
+}
+#new-game-btn {
+    /* background-color:azure; */
+    background-color: red;
+    color: white;
+}
+#new-game-option {
+    margin-top: 12%;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
 }
 
 
@@ -138,7 +152,7 @@ body {
     overflow: auto;
     position: relative;
 }
-#non-drop {
+/* #non-drop {
 	width: 100px;
 	height: 100px;
 	float: left;
@@ -153,7 +167,7 @@ body {
 	margin: 10px;
 	background-color:yellow;
 	padding:10px;
-}
+} */
 
 /* Tiles sizes (Not all are the same) */
 #board-tile-1 {

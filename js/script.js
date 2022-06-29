@@ -8,7 +8,7 @@ $(function() {
         }
     });
     
-    $('#drop, #tiles-in-rack, .tile-spot').droppable({
+    $('#tiles-in-rack, .tile-spot').droppable({
         accept:'.draggable',
         drop: function(event,ui){
             if (currentParent != $(this).attr('id')){
