@@ -1,0 +1,126 @@
+body {
+    background-color: antiquewhite;
+}
+
+#tile-rack{
+    /* background-color: yellowgreen; */
+    background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
+    background-size: 100% 100%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: auto; */
+    width: 600px;
+    height: 100px;
+    /* max-width: 100%; */
+    /* height: auto; */
+    background-repeat: no-repeat;
+    display:flex;
+}
+#tiles-in-rack {
+    /* background-color: blanchedalmond; */
+    width: 550px;
+    height: 80px;
+    margin-top: 10px;
+    /* margin-bottom: auto; */
+    margin-left: 25px;
+    margin-right: auto;
+    /* display: inline-block; */
+    display: flex;
+    justify-content:space-evenly;
+}
+
+#one-line-board {
+    background-image: url("../graphics_data/Scrabble_Board_OneLine.png");
+    width: 1129px;
+    height: 80px;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.tile-spot {
+    /* background-color: aqua; */
+    width: 70px;
+    height: 68px;
+    margin-left: 6px;
+    margin-top: 6px;
+    float:left;
+}
+
+.tile {
+    width: 67px;
+	height: 67px;
+	float: left;
+	/* margin: 10px; */
+	background-color :aqua;
+    background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg");
+    background-size: contain;
+	/* padding:10px; */
+    overflow: auto;
+    position: relative;
+}
+
+#drag {
+	width: 67px;
+	height: 67px;
+	float: left;
+	/* margin: 10px; */
+	background-color :aqua;
+    background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg");
+    background-size: contain;
+	/* padding:10px; */
+    overflow: auto;
+    position: relative;
+}
+#non-drop {
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 10px;
+	background-color :orange;
+	padding:10px;
+}
+#drop {
+	width: 150px;
+	height: 150px;
+	float: left;
+	margin: 10px;
+	background-color:yellow;
+	padding:10px;
+}
+
+/* Tiles sizes (Not all are the same) */
+#board-tile-1 {
+    width: 66px;
+    height: 67px;
+}
+#board-tile-2 {
+    width: 71px;
+    height: 67px;
+}
+#board-tile-4 {
+    width: 67px;
+    height: 67px;
+}
+#board-tile-5 {
+    width: 67px;
+    height: 67px;
+}
+#board-tile-7 {
+    width: 68px;
+    height: 67px;
+}
+#board-tile-8 {
+    width: 68px;
+    height: 67px;
+}
+#board-tile-9 {
+    width: 68px;
+    height: 67px;
+}
+#board-tile-10 {
+    width: 69px;
+    height: 67px;
+}
