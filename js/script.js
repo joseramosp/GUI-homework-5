@@ -1,7 +1,7 @@
 var currentParent;
 
 $(function() {
-	$("#drag").draggable({
+	$(".tile").draggable({
         revert: 'invalid',
         start: function(){
             currentParent = $(this).parent().attr('id');
