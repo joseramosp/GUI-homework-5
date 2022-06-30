@@ -135,6 +135,24 @@ function validateWord() {
 
 function submitWord() {
     console.log("Submitting word...");
+    for(var i = 0; i < tilesOnBoard.length; i++) {
+        specialTile = $("#board-tile-" + (i+1)).attr("value");
+        if(specialTile) {
+            console.log("Special tile");
+            if(specialTile == "double-word-score"){
+
+            }
+            else { // double-letter-score
+
+            }
+        }
+        else{
+            currentScore += ScrabbleTiles[tilesOnBoard[i]]["value"];
+            gameScore += currentScore;
+        }
+    }
+    $("#current-score").text(currentScore);
+    $("#game-score").text(gameScore);
 }
 
 function newTurn() {
