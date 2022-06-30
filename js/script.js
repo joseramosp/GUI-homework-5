@@ -139,6 +139,7 @@ function submitWord() {
         specialTile = $("#board-tile-" + (i+1)).attr("value");
         if(specialTile) {
             console.log("Special tile");
+            currentScore += ScrabbleTiles[tilesOnBoard[i]]["value"];
             if(specialTile == "double-word-score"){
 
             }
@@ -148,9 +149,9 @@ function submitWord() {
         }
         else{
             currentScore += ScrabbleTiles[tilesOnBoard[i]]["value"];
-            gameScore += currentScore;
         }
     }
+    gameScore += currentScore;
     $("#current-score").text(currentScore);
     $("#game-score").text(gameScore);
 }
