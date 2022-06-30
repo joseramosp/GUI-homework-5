@@ -83,7 +83,7 @@ function getRandomTileLetter() {
 // This function will get an image for all the tiles that are on the rack
 function getTilesImage(){
     var tile_letter;
-    $(".tile").each(function( i) {
+    $(".newTile").each(function( i) {
         tile_letter = getRandomTileLetter();
         $(this).attr("value", tile_letter);
         $(this).attr("index", i);
@@ -91,6 +91,7 @@ function getTilesImage(){
             tile_letter = 'Blank';
         }
         $(this).css('background-image','url(graphics_data/Scrabble_Tiles/Scrabble_Tile_' + tile_letter + '.jpg)');
+        $(this).removeClass("newTile");
     });
 }
 
@@ -116,12 +117,13 @@ function nextDroppable(){
             word += letter;
             $("p.current-word-value").text(word);
             tilesOnBoard.push(letter);
+            tilesOnRack.pop($("#tiles-in-rack").index($(ui.draggable)));
             updateCurrentScore();
             nextSpotOnTheBoard++;
             nextDroppable();
 
             validateWord();
-            $(ui.draggable).classList.remove("draggable");
+            $(ui.draggable).removeClass("draggable");
         }
     });
 };
@@ -178,7 +180,7 @@ function newTurn() {
     tilesReminding = 100;
     nextSpotOnTheBoard = 1;
     tilesOnBoard = [];
-    tilesOnRack = [];
+    // tilesOnRack = [];
     currentScore = 0;
     hasDoubleWordScore = false;
     
@@ -189,7 +191,7 @@ function newTurn() {
     $("#submit-btn").prop("disabled",true).css({"background-color":"grey"});
     
     cleanBoard();
-    restackRack();
+    restackRack(all=false);
     createDraggable();
     getTilesImage();
     nextDroppable();
@@ -201,25 +203,37 @@ function cleanBoard() {
 }
 
 // This function restack the rack
-function restackRack() {
-    $("#tile-rack").html(
-        '<div id="tiles-in-rack">\
-            <div id="tile-1" class="tile draggable"></div>\
-            <div id="tile-2" class="tile draggable"></div>\
-            <div id="tile-3" class="tile draggable"></div>\
-            <div id="tile-4" class="tile draggable"></div>\
-            <div id="tile-5" class="tile draggable"></div>\
-            <div id="tile-6" class="tile draggable"></div>\
-            <div id="tile-7" class="tile draggable"></div>\
-        </div>'
-    );
+function restackRack(all=true) {
+    if(all){
+        $("#tile-rack").html(
+            '<div id="tiles-in-rack">\
+                <div id="tile-1" class="tile draggable newTile"></div>\
+                <div id="tile-2" class="tile draggable newTile"></div>\
+                <div id="tile-3" class="tile draggable newTile"></div>\
+                <div id="tile-4" class="tile draggable newTile"></div>\
+                <div id="tile-5" class="tile draggable newTile"></div>\
+                <div id="tile-6" class="tile draggable newTile"></div>\
+                <div id="tile-7" class="tile draggable newTile"></div>\
+            </div>'
+        );
+    }
+    else {
+        for(var i=0; i < (7 - tilesOnRack.length); i++){
+            $("#tiles-in-rack").append('<div id="tile-7" class="tile draggable newTile"></div>');
+        }
+    }
 }
 
 // This function reset the whole game
 function resetGame() {
     gameScore = 0;
+    tilesOnRack = [];
     $("#game-score").text(gameScore);
     newTurn();
+    restackRack();
+    createDraggable();
+    getTilesImage();
+    nextDroppable();
 }
 
 // jQuery function to run when document is ready
