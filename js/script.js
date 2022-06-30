@@ -32,8 +32,11 @@ var tilesReminding = 100;
 
 var word = "";
 
-tilesOnRack = [];
-tilesOnBoard = [];
+var tilesOnRack = [];
+var tilesOnBoard = [];
+
+var gameScore = 0;
+var currentScore = 0;
 
 var currentParent;
 var nextSpotOnTheBoard = 1;
@@ -107,6 +110,7 @@ function nextDroppable(){
             // $(this).droppable("disable");
             letter = $(ui.draggable).attr("value"); 
             word += letter;
+            $("p.current-word-value").text(word);
             tilesOnBoard.push(letter);
             nextSpotOnTheBoard++;
             nextDroppable();
@@ -131,4 +135,12 @@ function validateWord() {
 
 function submitWord() {
     console.log("Submitting word...");
+}
+
+function newTurn() {
+
+}
+
+function resetGame() {
+
 }
