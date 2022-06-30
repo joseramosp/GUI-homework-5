@@ -37,6 +37,7 @@ var tilesOnBoard = [];
 
 var gameScore = 0;
 var currentScore = 0;
+var hasDoubleWordScore = false;
 
 var currentParent;
 var nextSpotOnTheBoard = 1;
@@ -140,7 +141,12 @@ function validateWord() {
 
 function submitWord() {
     console.log("Submitting word...");
-    gameScore += currentScore;
+    if(hasDoubleWordScore){
+        gameScore += currentScore * 2;
+    }
+    else {
+        gameScore += currentScore;
+    }
     $("#game-score").text(gameScore);
     newTurn();
 }
@@ -149,18 +155,23 @@ function updateCurrentScore() {
     specialTile = $("#board-tile-" + nextSpotOnTheBoard).attr("value");
     if(specialTile) {
         console.log("Special tile");
-        currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
         if(specialTile == "double-word-score"){
-
+            hasDoubleWordScore = true;
+            currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
         }
         else { // double-letter-score
-
+            currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"] * 2;
         }
     }
     else{
         currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
     }
-    $("#current-score").text(currentScore);
+    if(hasDoubleWordScore){
+        $("#current-score").text(currentScore * 2);
+    }
+    else {
+        $("#current-score").text(currentScore);
+    }
 }
 
 function newTurn() {
@@ -170,6 +181,7 @@ function newTurn() {
     tilesOnBoard = [];
     tilesOnRack = [];
     currentScore = 0;
+    hasDoubleWordScore = false;
     
     $("#current-score").text(currentScore);
     $(".current-word-value").text("");
@@ -206,3 +218,27 @@ function resetGame() {
     $("#game-score").text(gameScore);
     newTurn();
 }
+
+function readTextFile(file = "file:///words.txt")
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+fetch('words.txt')
+  .then(response => response.text())
+  .then(text => console.log(text))
+
+// console.log(readTextFile());
