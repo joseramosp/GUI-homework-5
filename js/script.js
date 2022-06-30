@@ -87,16 +87,20 @@ function getTilesImage(){
 }
 
 $(function() {
-	$(".draggable").draggable({
+	createDraggable();
+    getTilesImage();
+    nextDroppable();
+    console.log(tilesOnRack)
+});
+
+function createDraggable() {
+    $(".draggable").draggable({
         revert: 'invalid',
         start: function(){
             currentParent = $(this).parent().attr('id');
         }
     });
-    getTilesImage();
-    nextDroppable();
-    console.log(tilesOnRack)
-});
+}
 
 function nextDroppable(){
     $('#board-tile-'+ nextSpotOnTheBoard).droppable({
@@ -112,6 +116,7 @@ function nextDroppable(){
             word += letter;
             $("p.current-word-value").text(word);
             tilesOnBoard.push(letter);
+            updateCurrentScore();
             nextSpotOnTheBoard++;
             nextDroppable();
             
@@ -135,31 +140,69 @@ function validateWord() {
 
 function submitWord() {
     console.log("Submitting word...");
-    for(var i = 0; i < tilesOnBoard.length; i++) {
-        specialTile = $("#board-tile-" + (i+1)).attr("value");
-        if(specialTile) {
-            console.log("Special tile");
-            currentScore += ScrabbleTiles[tilesOnBoard[i]]["value"];
-            if(specialTile == "double-word-score"){
+    gameScore += currentScore;
+    $("#game-score").text(gameScore);
+    newTurn();
+}
 
-            }
-            else { // double-letter-score
+function updateCurrentScore() {
+    specialTile = $("#board-tile-" + nextSpotOnTheBoard).attr("value");
+    if(specialTile) {
+        console.log("Special tile");
+        currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
+        if(specialTile == "double-word-score"){
 
-            }
         }
-        else{
-            currentScore += ScrabbleTiles[tilesOnBoard[i]]["value"];
+        else { // double-letter-score
+
         }
     }
-    gameScore += currentScore;
+    else{
+        currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
+    }
     $("#current-score").text(currentScore);
-    $("#game-score").text(gameScore);
 }
 
 function newTurn() {
+    word = "";
+    tilesReminding = 100;
+    nextSpotOnTheBoard = 1;
+    tilesOnBoard = [];
+    tilesOnRack = [];
+    currentScore = 0;
+    
+    $("#current-score").text(currentScore);
+    $(".current-word-value").text("");
+    $("p.letters-validation").text("No");
+    $(".letters-validation").css({"color":"red"});
+    
+    cleanBoard();
+    restackRack();
+    createDraggable();
+    getTilesImage();
+    nextDroppable();
+}
 
+function cleanBoard() {
+    $(".tile-spot").html("");
+}
+
+function restackRack() {
+    $("#tile-rack").html(
+        '<div id="tiles-in-rack">\
+            <div id="tile-1" class="tile draggable"></div>\
+            <div id="tile-2" class="tile draggable"></div>\
+            <div id="tile-3" class="tile draggable"></div>\
+            <div id="tile-4" class="tile draggable"></div>\
+            <div id="tile-5" class="tile draggable"></div>\
+            <div id="tile-6" class="tile draggable"></div>\
+            <div id="tile-7" class="tile draggable"></div>\
+        </div>'
+    );
 }
 
 function resetGame() {
-
+    gameScore = 0;
+    $("#game-score").text(gameScore);
+    newTurn();
 }
