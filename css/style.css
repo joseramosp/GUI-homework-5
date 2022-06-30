@@ -92,11 +92,9 @@ body {
     width: 67px;
 	height: 67px;
 	float: left;
-	/* margin: 10px; */
 	background-color :aqua;
-    background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg");
+    /* background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg"); */
     background-size: contain;
-	/* padding:10px; */
     overflow: auto;
     position: relative;
 }
@@ -140,18 +138,16 @@ body {
 
 
 
-#drag {
+/* #drag {
 	width: 67px;
 	height: 67px;
 	float: left;
-	/* margin: 10px; */
 	background-color :aqua;
     background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg");
     background-size: contain;
-	/* padding:10px; */
     overflow: auto;
     position: relative;
-}
+} */
 /* #non-drop {
 	width: 100px;
 	height: 100px;

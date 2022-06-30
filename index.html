@@ -23,43 +23,43 @@
         <div id="one-line-board" >
             <div id="board-tile-1" class="tile-spot droppable"></div>
             <div id="board-tile-2" class="tile-spot droppable"></div>
-            <div id="board-tile-3" class="tile-spot droppable"></div>
+            <div id="board-tile-3" class="tile-spot droppable double-word-score"></div>
             <div id="board-tile-4" class="tile-spot droppable"></div>
             <div id="board-tile-5" class="tile-spot droppable"></div>
             <div id="board-tile-6" class="tile-spot droppable"></div>
-            <div id="board-tile-7" class="tile-spot droppable"></div>
+            <div id="board-tile-7" class="tile-spot droppable double-letter-score"></div>
             <div id="board-tile-8" class="tile-spot droppable"></div>
-            <div id="board-tile-9" class="tile-spot droppable"></div>
+            <div id="board-tile-9" class="tile-spot droppable double-letter-score"></div>
             <div id="board-tile-10" class="tile-spot droppable"></div>
             <div id="board-tile-11" class="tile-spot droppable"></div>
             <div id="board-tile-12" class="tile-spot droppable"></div>
-            <div id="board-tile-13" class="tile-spot droppable"></div>
+            <div id="board-tile-13" class="tile-spot droppable double-word-score"></div>
             <div id="board-tile-14" class="tile-spot droppable"></div>
             <div id="board-tile-15" class="tile-spot droppable"></div>
         </div>
         <div id="current-word-info">
-            <h4>Your word is: <p class="current-word-value">Hello</p></h4>
+            <h4>Your word is: <p class="current-word-value"></p></h4>
             <h4>It is at least 2 letters long: <p class="letters-validation">No</p></h4>
             <h4>It is in the dictionary: <p class="dictionary-word">No</p></h4>
         </div>
         <div id="tile-rack">
-            <div id="tiles-in-rack" class="droppable">
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
-                <div class="tile draggable"></div>
+            <div id="tiles-in-rack">
+                <div id="tile-1" class="tile draggable"></div>
+                <div id="tile-2" class="tile draggable"></div>
+                <div id="tile-3" class="tile draggable"></div>
+                <div id="tile-4" class="tile draggable"></div>
+                <div id="tile-5" class="tile draggable"></div>
+                <div id="tile-6" class="tile draggable"></div>
+                <div id="tile-7" class="tile draggable"></div>
             </div>
         </div>
         <div id="game-options">
             <div id="current-game-options">
-                <button id="submit-btn">Submit Word</button>
+                <button id="submit-btn" onclick="submitWord()">Submit Word</button>
                 <button id="trade-btn">Trade Tiles</button>
             </div>
             <div id="new-game-option">
-                <button id="new-game-btn">New Game</button>
+                <button id="new-game-btn" >New Game</button>
             </div>
         </div>
         <!-- Link for the script locally -->
