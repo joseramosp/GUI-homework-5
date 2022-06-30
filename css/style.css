@@ -1,9 +1,18 @@
+/* 
+Student Name:   Jose Ramos
+Student ID:     01930952
+Assignment:     Homework 5
+Class:          GUI I
+Date:           Wednesday 29/06/2022 
+File:           style.css
+*/
+
 body {
     background-color: antiquewhite;
 }
 
+/* CSS for score board elements */
 #score-board {
-    /* background-color:burlywood; */
     display: flex;
     justify-content: space-evenly;
     width: 1100px;
@@ -11,11 +20,11 @@ body {
     margin-right: auto;
     margin-top: 8%;
 }
-
 #score-board p {
     display: inline;
 }
 
+/* Section for game board */
 #one-line-board {
     background-image: url("../graphics_data/Scrabble_Board_OneLine.png");
     width: 1129px;
@@ -25,62 +34,7 @@ body {
     margin-right: auto;
     margin-bottom: auto;
 }
-
-#current-word-info {
-    /* background-color: aliceblue; */
-    width: fit-content;
-    margin-top: 4%;
-    margin-left: auto;
-    margin-right: auto;
-    /* display: inline-block; */
-    text-align:center;
-}
-
-#current-word-info p {
-    display: inline;
-}
-
-#current-word-info .current-word-value {
-    color:rgb(133, 154, 91);
-}
-
-#current-word-info .letters-validation {
-    color: red;
-}
-
-#current-word-info .dictionary-word {
-    color: red;
-}
-
-#tile-rack{
-    /* background-color: yellowgreen; */
-    background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
-    background-size: 100% 100%;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    /* margin-bottom: auto; */
-    width: 600px;
-    height: 100px;
-    background-repeat: no-repeat;
-    display:flex;
-}
-
-#tiles-in-rack {
-    /* background-color: blanchedalmond; */
-    width: 550px;
-    height: 80px;
-    margin-top: 10px;
-    /* margin-bottom: auto; */
-    margin-left: 25px;
-    margin-right: auto;
-    /* display: inline-block; */
-    display: flex;
-    justify-content:space-evenly;
-}
-
 .tile-spot {
-    /* background-color: aqua; */
     width: 70px;
     height: 68px;
     margin-left: 6px;
@@ -88,25 +42,64 @@ body {
     float:left;
 }
 
+/* CSS for current word info */
+#current-word-info {
+    width: fit-content;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+#current-word-info p {
+    display: inline;
+}
+#current-word-info .current-word-value {
+    color:rgb(133, 154, 91);
+}
+#current-word-info .letters-validation {
+    color: red;
+}
+#current-word-info .dictionary-word {
+    color: red;
+}
+
+/* CSS for all the elements on the rack */
+#tile-rack{
+    background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
+    background-size: 100% 100%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 100px;
+    background-repeat: no-repeat;
+    display:flex;
+}
+#tiles-in-rack {
+    width: 550px;
+    height: 80px;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: auto;
+    display: flex;
+    justify-content:space-evenly;
+}
 .tile {
     width: 67px;
 	height: 67px;
 	float: left;
-	background-color :aqua;
-    /* background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg"); */
+	background-color: #E2BB93;
     background-size: contain;
     overflow: auto;
     position: relative;
 }
 
+/* CSS for the game options section */
 #game-options {
-    /* background-color: aliceblue; */
     width: 500px;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    /* display: block; */
-    /* justify-content: space-evenly; */
 }
 #current-game-options {
     display: flex;
@@ -125,7 +118,6 @@ body {
     color: white;
 }
 #new-game-btn {
-    /* background-color:azure; */
     background-color: red;
     color: white;
 }
@@ -135,35 +127,6 @@ body {
     margin-right: auto;
     width: fit-content;
 }
-
-
-
-/* #drag {
-	width: 67px;
-	height: 67px;
-	float: left;
-	background-color :aqua;
-    background-image: url("../graphics_data/Scrabble_Tiles/Scrabble_Tile_J.jpg");
-    background-size: contain;
-    overflow: auto;
-    position: relative;
-} */
-/* #non-drop {
-	width: 100px;
-	height: 100px;
-	float: left;
-	margin: 10px;
-	background-color :orange;
-	padding:10px;
-}
-#drop {
-	width: 150px;
-	height: 150px;
-	float: left;
-	margin: 10px;
-	background-color:yellow;
-	padding:10px;
-} */
 
 /* Tiles sizes (Not all are the same) */
 #board-tile-1 {

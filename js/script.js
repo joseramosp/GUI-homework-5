@@ -1,3 +1,11 @@
+// Student Name:   Jose Ramos
+// Student ID:     01930952
+// Assignment:     Homework 5
+// Class:          GUI I
+// Date:           Wednesday 29/06/2022
+// File:           script.js
+
+// ScrabbleTiles object example from professor Heines
 var ScrabbleTiles = [] ;
 
 ScrabbleTiles["A"] = { "value" : 1,  "original-distribution" : 9,  "number-remaining" : 9  } ;
@@ -45,11 +53,13 @@ var nextSpotOnTheBoard = 1;
 // Creating tiles to store the letter of each
 var tile1, tile2, tile3, tile4, tile5, tile6, tile7;
 
+// Function to get a random int
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
 
-function getRandomTile() {
+// Function to get a random tile letter 
+function getRandomTileLetter() {
     if (tilesReminding > 0){
         var keys = Object.keys(ScrabbleTiles);
         var tile = {"number-remaining": 0};
@@ -58,7 +68,6 @@ function getRandomTile() {
         while (tile["number-remaining"] < 1){
             letter = Array.from(keys)[getRandomInt(keys.length)];
             tile = ScrabbleTiles[letter];
-            // console.log(letter);
         }
         
         // Updating tiles rack list
@@ -71,13 +80,11 @@ function getRandomTile() {
     }
 };
 
-// console.log(Object.keys(ScrabbleTiles)[2]);
-// console.log(getRandomTile());
-
+// This function will get an image for all the tiles that are on the rack
 function getTilesImage(){
     var tile_letter;
     $(".tile").each(function( i) {
-        tile_letter = getRandomTile();
+        tile_letter = getRandomTileLetter();
         $(this).attr("value", tile_letter);
         $(this).attr("index", i);
         if(tile_letter == '_'){
@@ -87,13 +94,7 @@ function getTilesImage(){
     });
 }
 
-$(function() {
-	createDraggable();
-    getTilesImage();
-    nextDroppable();
-    console.log(tilesOnRack)
-});
-
+// This function will create draggable functionality to all tiles
 function createDraggable() {
     $(".draggable").draggable({
         revert: 'invalid',
@@ -103,16 +104,14 @@ function createDraggable() {
     });
 }
 
+// This function will create the next spot on the board as droppable
 function nextDroppable(){
     $('#board-tile-'+ nextSpotOnTheBoard).droppable({
         accept:'.draggable',
         drop: function(event,ui){
             if (currentParent != $(this).attr('id')){
-            //   $(ui.draggable).appendTo($(this)).removeAttr('style');
               $(ui.draggable).appendTo($(this)).css({"left":"", "top":"", "right":""});
             }
-            // $(ui.draggable).draggable( "option", "disabled", true );
-            // $(this).droppable("disable");
             letter = $(ui.draggable).attr("value"); 
             word += letter;
             $("p.current-word-value").text(word);
@@ -120,10 +119,6 @@ function nextDroppable(){
             updateCurrentScore();
             nextSpotOnTheBoard++;
             nextDroppable();
-            
-            // Testing
-            console.log(word);
-            console.log(tilesOnBoard);
 
             validateWord();
             $(ui.draggable).classList.remove("draggable");
@@ -131,17 +126,17 @@ function nextDroppable(){
     });
 };
 
+// This function will validate the word before being submitted
 function validateWord() {
     if(tilesOnBoard.length > 1) {
         $("p.letters-validation").text("Yes");
         $(".letters-validation").css({"color":"green"});
         $("#submit-btn").prop("disabled",false).css({"background-color":"green"});
     }
-    console.log("Validating...");
 }
 
+// This function will submit the word and get the game score
 function submitWord() {
-    console.log("Submitting word...");
     if(hasDoubleWordScore){
         gameScore += currentScore * 2;
     }
@@ -152,10 +147,12 @@ function submitWord() {
     newTurn();
 }
 
+// This function will update the value of the current value
 function updateCurrentScore() {
     specialTile = $("#board-tile-" + nextSpotOnTheBoard).attr("value");
+    
+    // If it is double letter score or double word score
     if(specialTile) {
-        console.log("Special tile");
         if(specialTile == "double-word-score"){
             hasDoubleWordScore = true;
             currentScore += ScrabbleTiles[tilesOnBoard[nextSpotOnTheBoard - 1]]["value"];
@@ -175,6 +172,7 @@ function updateCurrentScore() {
     }
 }
 
+// This function clean the board and restack the rack to prepare for next turn
 function newTurn() {
     word = "";
     tilesReminding = 100;
@@ -197,10 +195,12 @@ function newTurn() {
     nextDroppable();
 }
 
+// This function clean the board
 function cleanBoard() {
     $(".tile-spot").html("");
 }
 
+// This function restack the rack
 function restackRack() {
     $("#tile-rack").html(
         '<div id="tiles-in-rack">\
@@ -215,32 +215,16 @@ function restackRack() {
     );
 }
 
+// This function reset the whole game
 function resetGame() {
     gameScore = 0;
     $("#game-score").text(gameScore);
     newTurn();
 }
 
-function readTextFile(file = "file:///words.txt")
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                alert(allText);
-            }
-        }
-    }
-    rawFile.send(null);
-}
-
-fetch('words.txt')
-  .then(response => response.text())
-  .then(text => console.log(text))
-
-// console.log(readTextFile());
+// jQuery function to run when document is ready
+$(function() {
+	createDraggable();
+    getTilesImage();
+    nextDroppable();
+});

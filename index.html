@@ -1,3 +1,12 @@
+<!-- 
+Student Name:   Jose Ramos
+Student ID:     01930952
+Assignment:     Homework 5
+Class:          GUI I
+Date:           Wednesday 29/06/2022
+File:           index.html
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,6 +22,8 @@
         <title>Homework 5</title>
     </head>
     <body>
+        
+        <!-- This part is for the score board -->
         <div class="container">
             <h1 align="center">GUI I - Homework 5</h1>
             <div id="score-board">
@@ -20,6 +31,8 @@
                 <h3>Current Score: <p id="current-score">0</p></h3>
             </div>
         </div>
+        
+        <!-- This section is for the elements on the board -->
         <div id="one-line-board" >
             <div id="board-tile-1" class="tile-spot droppable"></div>
             <div id="board-tile-2" class="tile-spot droppable"></div>
@@ -37,11 +50,15 @@
             <div id="board-tile-14" class="tile-spot droppable"></div>
             <div id="board-tile-15" class="tile-spot droppable"></div>
         </div>
+        
+        <!-- This section is to display the current word information -->
         <div id="current-word-info">
             <h4>Your word is: <p class="current-word-value"></p></h4>
             <h4>It is at least 2 letters long: <p class="letters-validation">No</p></h4>
             <h4>It is in the dictionary: <p class="dictionary-word">No</p></h4>
         </div>
+        
+        <!-- This section is to display the rack and the tiles in it -->
         <div id="tile-rack">
             <div id="tiles-in-rack">
                 <div id="tile-1" class="tile draggable"></div>
@@ -53,6 +70,8 @@
                 <div id="tile-7" class="tile draggable"></div>
             </div>
         </div>
+
+        <!-- This section is for the buttons that allow user to restart game, submit word and trade tiles -->
         <div id="game-options">
             <div id="current-game-options">
                 <button id="submit-btn" onclick="submitWord()" disabled>Submit Word</button>
@@ -62,6 +81,7 @@
                 <button id="new-game-btn" onclick="resetGame()">New Game</button>
             </div>
         </div>
+        
         <!-- Link for the script locally -->
         <script src="js/script.js"></script>
         <!-- Link for the script on github pages -->
