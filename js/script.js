@@ -135,6 +135,7 @@ function validateWord() {
     if(tilesOnBoard.length > 1) {
         $("p.letters-validation").text("Yes");
         $(".letters-validation").css({"color":"green"});
+        $("#submit-btn").prop("disabled",false).css({"background-color":"green"});
     }
     console.log("Validating...");
 }
@@ -187,6 +188,7 @@ function newTurn() {
     $(".current-word-value").text("");
     $("p.letters-validation").text("No");
     $(".letters-validation").css({"color":"red"});
+    $("#submit-btn").prop("disabled",true).css({"background-color":"grey"});
     
     cleanBoard();
     restackRack();
